@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="683f6a02-5f19-46e9-866a-428b66a29725" name="google-cloud-engine" url="http://104.199.83.226">
+        <fileTransfer host="104.199.83.226" port="22" privateKey="C:\Users\janch\Desktop\google-cloud-engine" accessType="SFTP" username="janchk" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
