@@ -11,21 +11,12 @@
     <form action="{% url "upload_file" %}" method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
-{#        <input type="hidden" name="imgtype"  value="content_img"/>#}
-            <p>Content image</p>
+        <P>Content image</P>
         <input type="file" placeholder="File" name="content_img"/>
-            <P>Style image</P>
-        <input type="file" placeholder="File" name="style_img" />
+        <P>Style image</P>
+        <input type="file" placeholder="File" name="style_img"/>
         <p><input type="submit" value="Upload"/></p>
     </form>
-{#    <P>Style image</P>#}
-{#    <form <ac></ac>tion="{% url "upload_file" %}" method="post" enctype="multipart/form-data">#}
-{#        {{ form.as_p }}#}
-{#        {% csrf_token %}#}
-{#        <input type="hidden" name="imgtype" value="style_img">#}
-{#        <input type="file" placeholder="File" name="file"/>#}
-{#        <p><input type="submit" value="Upload"/></p>#}
-{#    </form>#}
 {% endblock %}
 
 </body>
