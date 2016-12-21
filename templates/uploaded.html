@@ -1,1 +1,7 @@
-Uploaded page is loaded.
+{% extends "base.html" %}
+{% block content %}
+    <p>Uploaded page is loaded.</p>
+    <img src="{{ cimg }}" height="30%" width="30%" title="content image" />
+    <img src="{{ simg }}" height="30%" width="30%" title="style image/">
+
+{% endblock %}
