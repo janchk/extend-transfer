@@ -1,5 +1,4 @@
 from django.conf import settings
-import os
 
 
 def handle_uploaded_file(f, imgtype):

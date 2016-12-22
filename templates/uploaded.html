@@ -3,7 +3,9 @@
     <p>Uploaded page is loaded.</p>
     <img src="{{ cimg }}" height="30%" width="30%" title="content image"/>
     <img src="{{ simg }}" height="30%" width="30%" title="style image/">
-    <form action="">
+    <form action="{% url "proceed" %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="img_to_proceed" value="{{ cimg }},{{ simg }}" >
         <P><input type="submit" value="Proceed"/></P>
     </form>
 
