@@ -16,10 +16,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = (
-    'media/'
+    '~/PychramProjects/caffe-django/media/'
 )
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '~/PychramProjects/caffe-django/media/'
 
 
 # Quick-start development settings - unsuitable for production
