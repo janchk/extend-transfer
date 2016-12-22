@@ -1,8 +1,10 @@
 from django.conf import settings
+import os
 
 
 def handle_uploaded_file(f, imgtype):
-    print(imgtype, '!!!!!!!!!!!!!!')
+    # print(imgtype, '!!!!!!!!!!!!!!')
+    print('BASEDIIR =', settings.BASE_DIR)
     if imgtype == "content_image":
         imgpth = settings.MEDIA_URL + 'images/content_img/' + f.name  # for content image
     else:
