@@ -2,11 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="683f6a02-5f19-46e9-866a-428b66a29725" name="google-cloud-engine" url="http://104.199.83.226">
-        <fileTransfer host="104.199.83.226" port="22" privateKey="C:\Users\janch\Desktop\google-cloud-engine" accessType="SFTP" username="janchk" keyPair="true">
+      <webServer id="683f6a02-5f19-46e9-866a-428b66a29725" name="google-cloud-engine" url="http://104.199.70.242">
+        <fileTransfer host="104.199.70.242" port="22" privateKey="C:\Users\janch\Desktop\google-cloud-engine" accessType="SFTP" keyPair="true" username="janchk">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>

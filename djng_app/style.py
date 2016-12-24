@@ -229,7 +229,7 @@ class StyleTransfer(object):
         """
 
         # style_path = os.path.abspath(os.path.split(__file__)[0])
-        style_path = '/home/jan/Documents/style-transfer/style-transfer'
+        style_path = '/home/janchk/style-transfer'
         # must edit this variable due to style_transfer path
         base_path = os.path.join(style_path, "models", model_name)
 

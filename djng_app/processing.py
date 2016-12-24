@@ -1,4 +1,5 @@
 from djng_app import style
+from django.shortcuts import render
 
 
 # from djng_app import views
@@ -13,12 +14,13 @@ class Namespace:
 
 
 def processing(request):
+    output = 'media/output/sample.jpg'
     images = request.POST['img_to_proceed'].split(',')
     cntimg = images[0]
     simg = images[1]
     args = Namespace(style_img=simg, content_img=cntimg, gpu_id=-1, model='vgg19', init='content',
-                     ratio='1e4', num_iters='2', length=200, verbose='store_true', output='')
+                     ratio='1e4', num_iters=100, length=200, verbose=0, output=output)
     processed_output = style.main(args)
     print(processed_output)
     # return processed_output
-    return args
+    return render(request, 'Proceeded.html', {'out': output})
