@@ -19,6 +19,8 @@ MEDIA_ROOT = (
     'media/'
 )
 
+STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
+
 MEDIA_URL = 'media/'
 
 
