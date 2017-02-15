@@ -45,6 +45,7 @@ from scipy.misc import imsave
 from scipy.optimize import minimize
 from skimage import img_as_ubyte
 from skimage.transform import rescale
+from django_proj2.settings import STYLE_PATH
 
 # logging
 LOG_FORMAT = "%(filename)s:%(funcName)s:%(asctime)s.%(msecs)03d -- %(message)s"
@@ -229,7 +230,7 @@ class StyleTransfer(object):
         """
 
         # style_path = os.path.abspath(os.path.split(__file__)[0])
-        style_path = '/home/janchk/style-transfer'
+        style_path = STYLE_PATH
         # must edit this variable due to style_transfer path
         base_path = os.path.join(style_path, "models", model_name)
 
