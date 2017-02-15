@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="google-cloud-engine">
     <serverData>
+      <paths name="Copy of project-level server 'google-cloud-engine'">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/janchk/deploy/djng_caff/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="google-cloud-engine">
         <serverdata>
           <mappings>
