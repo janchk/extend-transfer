@@ -22,6 +22,7 @@ MEDIA_ROOT = (
 STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
 
 MEDIA_URL = 'media/'
+# MEDIA_URL = '/home/jan/Documents/style-transfer/style-transfer/outputs/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -58,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_proj2.urls'
+ROOT_URLCONF = 'django_proj.urls'
 
 TEMPLATES = [
     {
@@ -77,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_proj2.wsgi.application'
+WSGI_APPLICATION = 'django_proj.wsgi.application'
 
 
 # Database

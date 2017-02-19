@@ -45,14 +45,14 @@ from scipy.misc import imsave
 from scipy.optimize import minimize
 from skimage import img_as_ubyte
 from skimage.transform import rescale
-from django_proj2.settings import STYLE_PATH
+from django_proj.settings import STYLE_PATH
 
 # logging
 LOG_FORMAT = "%(filename)s:%(funcName)s:%(asctime)s.%(msecs)03d -- %(message)s"
 
 # numeric constants
 INF = np.float32(np.inf)
-STYLE_SCALE = 1.2  # keep in mind this constant
+STYLE_SCALE = 1.2  # keep in mind that constant
 
 # weights for the individual models
 # assume that corresponding layers' top blob matches its name
