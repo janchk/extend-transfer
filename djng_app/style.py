@@ -46,6 +46,7 @@ from scipy.optimize import minimize
 from skimage import img_as_ubyte
 from skimage.transform import rescale
 from django_proj.settings import STYLE_PATH
+from cstm_clases import Fdout
 
 # logging
 LOG_FORMAT = "%(filename)s:%(funcName)s:%(asctime)s.%(msecs)03d -- %(message)s"
@@ -382,7 +383,9 @@ class StyleTransfer(object):
         """
 
         self.grad_iter = 0
+        # self.pbar = pb.ProgressBar(term_width=0, fd=Fdout()) # need to reassign fd
         self.pbar = pb.ProgressBar()
+        # self.pbar.widgets = [pb.Percentage()]
         self.pbar.widgets = ["Optimizing: ", pb.Percentage(),
                              " ", pb.Bar(marker=pb.AnimatedMarker()),
                              " ", pb.ETA()]
