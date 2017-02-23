@@ -2,6 +2,7 @@ from celery import Celery
 from processing import processing
 from django.shortcuts import render
 
+
 app = Celery('tasks', backend='amqp', broker='amqp://')
 
 

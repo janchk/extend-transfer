@@ -383,12 +383,12 @@ class StyleTransfer(object):
         """
 
         self.grad_iter = 0
-        # self.pbar = pb.ProgressBar(term_width=0, fd=Fdout()) # need to reassign fd
-        self.pbar = pb.ProgressBar()
-        # self.pbar.widgets = [pb.Percentage()]
-        self.pbar.widgets = ["Optimizing: ", pb.Percentage(),
-                             " ", pb.Bar(marker=pb.AnimatedMarker()),
-                             " ", pb.ETA()]
+        self.pbar = pb.ProgressBar(term_width=0, fd=Fdout()) # need to reassign fd
+        # self.pbar = pb.ProgressBar()
+        self.pbar.widgets = [pb.Percentage()]
+        # self.pbar.widgets = ["Optimizing: ", pb.Percentage(),
+        #                      " ", pb.Bar(marker=pb.AnimatedMarker()),
+        #                      " ", pb.ETA()]
         self.pbar.maxval = max_iter
 
     def transfer_style(self, img_style, img_content, length=512, ratio=1e5,
