@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def processing(request):
-    output = 'media/output/output' + '_' + request.COOKIES['id'] + '.jpg'  # must set uniqe names for each user
+    output = 'media/output/output' + '_' + request.COOKIES['id'] + '.jpg'
     images = request.POST['img_to_proceed'].split(',')
     cntimg = images[0]
     simg = images[1]
