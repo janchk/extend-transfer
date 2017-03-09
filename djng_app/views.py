@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import UploadFileForm
 from djng_app import file_handler
@@ -7,10 +7,11 @@ import uuid
 
 # def index(request):
 #     return HttpResponse("Hi, it's django_app index")
-
-
 def upload_file(request):
-    print(request)
+    try:
+        request.environ['HTTP_REFERER']
+    except:
+        return redirect('http://127.0.0.1:8080')
     cntimg, simg = 'none', 'none'
     try:
         uniq_id = request.COOKIES['id']
@@ -27,5 +28,3 @@ def upload_file(request):
     response = render(request, 'uploaded.html', {'form': form, 'cimg': cntimg, 'simg': simg})
     response.set_cookie('id', uniq_id, max_age=3600)
     return response
-
-    # Create your views here.
