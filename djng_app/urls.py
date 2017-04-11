@@ -1,10 +1,10 @@
-from django.conf.urls import url
-from django.views.generic import TemplateView
-from django.conf.urls.static import static
 from django.conf import settings
-# from djng_app import file_handler
+from django.conf.urls import url
+from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
+from djng_app.tasks import tskd_processing
 from djng_app.views import upload_file
-from tasks import tskd_processing
 
 urlpatterns = [
     # url(r'^$', views.index, name='index'),
