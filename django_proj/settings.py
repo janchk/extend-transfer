@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+# Celery
+CELERY_IGNORE_RESULT = False
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +47,6 @@ INSTALLED_APPS = [
     'djng_app.apps.DjngAppConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'django.contrib.sessions.backends.signed_cookies',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]

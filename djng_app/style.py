@@ -39,7 +39,9 @@ from djng_app.cstm_clases import Namespace
 # Celery
 from celery import Celery
 from celery import current_task
-app = Celery('style', backend='redis://localhost', broker='pyamqp://guest@localhost//')
+from celery.result import AsyncResult
+from django_proj.celery import app
+# app = Celery('style', backend='redis://localhost', broker='pyamqp://guest@localhost//')
 # from djang_app.processing import app
 
 # library imports
@@ -402,7 +404,7 @@ class StyleTransfer(object):
 
         self.grad_iter = 0
         logging.info(current_task)
-        self.pbar = pb.ProgressBar(term_width=0, fd=Fdout(tsk=current_task)) # todo need to reassign fd
+        self.pbar = pb.ProgressBar(term_width=0, fd=Fdout(tsk=current_task))  # todo need to reassign fd
         # self.pbar = pb.ProgressBar()
         self.pbar.widgets = [pb.Percentage()]
         # self.pbar.widgets = ["Optimizing: ", pb.Percentage(),
@@ -494,12 +496,17 @@ class StyleTransfer(object):
 
 @app.task()
 def main(args2):
+
     """
         Entry point.
     """
     # Translate dict to __dict__ ish
     args = Namespace(**args2)
+    # print ("state", current_task.state)
+    # Aresult = AsyncResult(current_task, backend='redis://localhost')
+    # print ('Aresult', Aresult.)
     # logging
+    # print (AsyncResult(current_task.request.id, backend='redis://localhost').state)
     level = logging.INFO if args.verbose else logging.DEBUG
     logging.basicConfig(format=LOG_FORMAT, datefmt="%H:%M:%S", level=level)
     logging.info("Starting style transfer.")

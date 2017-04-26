@@ -4,7 +4,7 @@ from celery import Celery
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_proj.settings')
 
-app = Celery('django_proj')
+app = Celery('django_proj', backend='redis://localhost', broker='pyamqp://guest@localhost//')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
