@@ -276,7 +276,7 @@ class StyleTransfer(object):
             assert False, "model not available"
 
         # add model and weights
-        logging.info(model_file) # todo logging model_file
+        logging.info(model_file)
         self.load_model(model_file, pretrained_file, mean_file)
         self.weights = weights.copy()
         self.layers = []
@@ -325,13 +325,13 @@ class StyleTransfer(object):
         # load net (supressing stderr output)
         null_fds = os.open(os.devnull, os.O_RDWR)
         out_orig = os.dup(2)
-        logging.info(model_file.__repr__()) # todo logging2
+        logging.info(model_file.__repr__())
         logging.info(pretrained_file.__repr__())
         logging.info(caffe.TEST.__repr__())
         os.dup2(null_fds, 2)
         model_file = model_file.encode('ascii')
         pretrained_file = pretrained_file.encode('ascii')
-        net = caffe.Net(model_file, pretrained_file, caffe.TEST) # todo error
+        net = caffe.Net(model_file, pretrained_file, caffe.TEST)
         os.dup2(out_orig, 2)
         os.close(null_fds)
 
@@ -404,7 +404,7 @@ class StyleTransfer(object):
 
         self.grad_iter = 0
         logging.info(current_task)
-        self.pbar = pb.ProgressBar(term_width=0, fd=Fdout(tsk=current_task))  # todo need to reassign fd
+        self.pbar = pb.ProgressBar(term_width=0, fd=Fdout(tsk=current_task))
         # self.pbar = pb.ProgressBar()
         self.pbar.widgets = [pb.Percentage()]
         # self.pbar.widgets = ["Optimizing: ", pb.Percentage(),

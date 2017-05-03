@@ -10,13 +10,11 @@ from kombu.utils import json
 class Fdout:
     def __init__(self, tsk):
         self.tsk_id = tsk
-        print(tsk, 'lol')
+        print("task ", tsk, "started" )
 
-    def write(self, smtxt):
-        #  todo need to reassign as backend progress
-        self.tsk_id.update_state(state=smtxt)
-        # print(smtxt)
-        print(smtxt) # n, AsyncResult(id=self.tsk_id, app=app).get())
+    def write(self, prgrs):
+        self.tsk_id.update_state(state="PROGRESS", meta=prgrs)
+        print(prgrs) # n, AsyncResult(id=self.tsk_id, app=app).get())
 
 
 # emulation for parser's namespace arguments

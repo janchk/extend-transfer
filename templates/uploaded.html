@@ -3,15 +3,11 @@
     <p>Uploaded page is loaded.</p>
     <img src="{{ cimg }}" height="30%" width="30%" title="content image"/>
     <img src="{{ simg }}" height="30%" width="30%" title="style image"/>
-    <form action="{% url "proceed" %}" method="post">
+    <form action="{% url "proceed" %}" method="post" id="result-load" name="result">
         {% csrf_token %}
-        <input type="hidden" name="img_to_proceed" value="{{ cimg }},{{ simg }}" />
-{#            <form action="{% url "pbar" %}" method="post">#}
-{#              todo make pbar#}
-{#               todo каким-нибудь елдом нужно посылать запросы на обновление#}
-{#                todo js использовать #}
-{#            </form>#}
-        <P><button type="submit" class="js-proceed-photos">Proceed</button></P>
-
     </form>
+    <P><button type="submit" id="js-proceed-photos">Proceed</button></P>
+
+
+{#    </form>#}
 {% endblock %}
