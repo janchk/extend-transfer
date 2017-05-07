@@ -10,22 +10,16 @@ from kombu.utils import json
 class Fdout:
     def __init__(self, tsk):
         self.tsk_id = tsk
-        print("task ", tsk, "started" )
+        print("task ", tsk, "started")
 
     def write(self, prgrs):
         self.tsk_id.update_state(state="PROGRESS", meta=prgrs)
-        print(prgrs) # n, AsyncResult(id=self.tsk_id, app=app).get())
+        print(prgrs)
 
 
 # emulation for parser's namespace arguments
 # must specify 10 arguments at least
 # json serialise
 class Namespace:
-    # def default(self, o):
-    #     if isinstance(o, Namespace):
-    #         return self.__dict__
-    #     return JSONEncoder.default(self, o)
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
-    # def __repr__(self):
-    #     return self.__dict__.__repr__()

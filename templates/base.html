@@ -33,9 +33,9 @@
                                 clearInterval(requests);
                                 $("#modal-progress").modal("hide");
                                 {# callin the form that define in uploaded.html#}
+                                $("#task_id")[0].value = data.tsk_id;
+{#                                    document.getElementById('tsk_id').value = data.tsk_id;#}
                                 $("#result-load").submit();
-
-
                             }
                         }
                     })

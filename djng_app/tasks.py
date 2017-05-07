@@ -13,6 +13,6 @@
 #         return redirect('http://127.0.0.1:8080')
 #     tsk = processing(request)
 #     #     current_task.update_state()
-#     response = render(request, 'Proceeded.html', {'out': tsk})
+#     response = render(request, 'proceeded.html', {'out': tsk})
 #
 #     return response

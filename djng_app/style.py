@@ -37,12 +37,8 @@ import timeit
 from djng_app.cstm_clases import Namespace
 
 # Celery
-from celery import Celery
-from celery import current_task
-from celery.result import AsyncResult
+from celery import current_task, task
 from django_proj.celery import app
-# app = Celery('style', backend='redis://localhost', broker='pyamqp://guest@localhost//')
-# from djang_app.processing import app
 
 # library imports
 import caffe
@@ -56,13 +52,14 @@ from skimage import img_as_ubyte
 from skimage.transform import rescale
 # from django_proj.settings import STYLE_PATH
 from djng_app.cstm_clases import Fdout
+# from djng_app.processing import time as TIM
 
 # logging
 LOG_FORMAT = "%(filename)s:%(funcName)s:%(asctime)s.%(msecs)03d -- %(message)s"
 
 # numeric constants
 INF = np.float32(np.inf)
-STYLE_SCALE = 1.2  # keep in mind that constant
+STYLE_SCALE = 1.5  # keep in mind that constant
 
 # weights for the individual models
 # assume that corresponding layers' top blob matches its name
@@ -538,6 +535,8 @@ def main(args2):
                                 n_iter=args.num_iters, verbose=args.verbose)
     end = timeit.default_timer()
     logging.info("Ran {0} iterations in {1:.0f}s.".format(n_iters, end - start))
+    # current_task.update_state(state="{0}s.".format(end - start))
+    # current_task.
     img_out = st.get_generated()
 
     # output path
@@ -552,7 +551,7 @@ def main(args2):
     # DONE!
     imsave(out_path, img_as_ubyte(img_out))
     logging.info("Output saved to {0}.".format(out_path))
-    return out_path
+    return "{0}s.".format(end - start)
 
 
 # if __name__ == "__main__":
