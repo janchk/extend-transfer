@@ -8,10 +8,10 @@ from django.http import JsonResponse
 
 def processing(request):
     processed_output = None
-    output = 'media/output/output_' + request.COOKIES['id'] + '.jpg'
+    output = 'media/output/output_' + request.COOKIES['id'] + '.jpg' #todo refactor this
     model = "googlenet" #googlenet, vgg19
     ratio = "1e8"
-    num_iters = 1
+    num_iters = 10
     length = 200
     try:
         request.POST['on_progress']

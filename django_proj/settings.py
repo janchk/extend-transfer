@@ -9,10 +9,14 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+
 # Celery
+
 CELERY_IGNORE_RESULT = False
 
+# Style-transfer perferences
 
+STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +25,7 @@ MEDIA_ROOT = (
     'media/'
 )
 
-STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
+
 
 MEDIA_URL = 'media/'
 # MEDIA_URL = '/home/jan/Documents/style-transfer/style-transfer/outputs/'
@@ -36,7 +40,7 @@ SECRET_KEY = 'dsju12fbd7+d*p@2_7y6w!_psgaik#9(edms)d7pn+sd!3ye_e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['104.199.83.226', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -85,6 +89,7 @@ WSGI_APPLICATION = 'django_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# todo change to postgres later mb
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

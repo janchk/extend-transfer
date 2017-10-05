@@ -41,6 +41,7 @@ from celery import current_task, task
 from django_proj.celery import app
 
 # library imports
+import django_proj.settings as sttngs
 import caffe
 import numpy as np
 import progressbar as pb
@@ -237,7 +238,8 @@ class StyleTransfer(object):
         """
 
         # style_path = os.path.abspath(os.path.split(__file__)[0])
-        style_path = '/home/jan/Documents/style-transfer/style-transfer'
+        # style_path = '/home/jan/Documents/style-transfer/style-transfer' # todo refactor this
+        style_path = sttngs.STYLE_PATH
         # must edit this variable due to style_transfer path
         base_path = os.path.join(style_path, "models", model_name)
 
