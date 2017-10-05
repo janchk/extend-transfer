@@ -1,5 +1,6 @@
 ### Pycharm ###
 .idea
+/**/*.pyc
 django_proj/*.pyc
 django_app/*.pyc
 
