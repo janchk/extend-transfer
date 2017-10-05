@@ -1,7 +1,7 @@
 ### Pycharm ###
 .idea
-django_proj./*pyc
-django_app./*pyc
+django_proj/*.pyc
+django_app/*.pyc
 
 ### BD ###
 *.sqlite3
