@@ -1,8 +1,16 @@
-# from celery import Celery, current_task
-# from celery.app import task
-# from djng_app.processing import processing
-# from django.shortcuts import render, redirect
-#
+from celery import Celery, current_task
+from celery.app import task
+from djng_app.style import main
+from django_proj.celery import app
+
+
+@app.task()
+def styletransfer(args):
+    processed_output = main(args)
+    return processed_output
+
+
+
 # #  celery -A django_proj worker --loglevel=info
 #
 #

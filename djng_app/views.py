@@ -5,8 +5,6 @@ from djng_app import file_handler
 import uuid
 
 
-# def index(request):
-#     return HttpResponse("Hi, it's django_app index")
 def upload_file(request):
     # todo change this function to decorator
     try:

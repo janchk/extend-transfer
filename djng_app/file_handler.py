@@ -1,11 +1,10 @@
 from django.conf import settings
 
-
+# todo handle with different types of images
 def handle_uploaded_file(f, imgtype, id):
-    # print(imgtype, '!!!!!!!!!!!!!!')
     print('BASEDIIR =', settings.BASE_DIR)
     if imgtype == "content_image":
-        imgpth = settings.MEDIA_URL + 'images/content_img/' + id  # for content image
+        imgpth = settings.MEDIA_URL + 'images/content_img/' + id   # for content image
     else:
         imgpth = settings.MEDIA_URL + 'images/style_img/' + id  # for style image
     with open(imgpth, 'wb+') as destination:

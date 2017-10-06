@@ -37,11 +37,10 @@ import timeit
 from djng_app.cstm_clases import Namespace
 
 # Celery
-from celery import current_task, task
-from django_proj.celery import app
+from celery import current_task
 
 # library imports
-import django_proj.settings as sttngs
+import django_proj.settings as settings
 import caffe
 import numpy as np
 import progressbar as pb
@@ -51,7 +50,6 @@ from scipy.misc import imsave
 from scipy.optimize import minimize
 from skimage import img_as_ubyte
 from skimage.transform import rescale
-# from django_proj.settings import STYLE_PATH
 from djng_app.cstm_clases import Fdout
 # from djng_app.processing import time as TIM
 
@@ -239,7 +237,7 @@ class StyleTransfer(object):
 
         # style_path = os.path.abspath(os.path.split(__file__)[0])
         # style_path = '/home/jan/Documents/style-transfer/style-transfer' # todo refactor this
-        style_path = sttngs.STYLE_PATH
+        style_path = settings.STYLE_PATH
         # must edit this variable due to style_transfer path
         base_path = os.path.join(style_path, "models", model_name)
 
@@ -492,8 +490,8 @@ class StyleTransfer(object):
 
         return res
 
-
-@app.task()
+# todo move it out
+# @app.task()
 def main(args2):
 
     """
@@ -502,10 +500,7 @@ def main(args2):
     # Translate dict to __dict__ ish
     args = Namespace(**args2)
     # print ("state", current_task.state)
-    # Aresult = AsyncResult(current_task, backend='redis://localhost')
-    # print ('Aresult', Aresult.)
     # logging
-    # print (AsyncResult(current_task.request.id, backend='redis://localhost').state)
     level = logging.INFO if args.verbose else logging.DEBUG
     logging.basicConfig(format=LOG_FORMAT, datefmt="%H:%M:%S", level=level)
     logging.info("Starting style transfer.")
@@ -538,7 +533,6 @@ def main(args2):
     end = timeit.default_timer()
     logging.info("Ran {0} iterations in {1:.0f}s.".format(n_iters, end - start))
     # current_task.update_state(state="{0}s.".format(end - start))
-    # current_task.
     img_out = st.get_generated()
 
     # output path
