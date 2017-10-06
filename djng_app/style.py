@@ -490,7 +490,6 @@ class StyleTransfer(object):
 
         return res
 
-# todo move it out
 # @app.task()
 def main(args2):
 
