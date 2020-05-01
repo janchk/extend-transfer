@@ -1,13 +1,14 @@
 from celery import Celery, current_task
 from celery.app import task
-from djng_app.style import main
+# from djng_app.style import main
 from django_proj.celery import app
 
 
 @app.task()
 def styletransfer(args):
-    processed_output = main(args)
-    return processed_output
+    # processed_output = main(args)
+    pass
+    # return processed_output
 
 
 
