@@ -1,5 +1,11 @@
-import subprocess
+import logging
+import progressbar as pb
+from celery import current_task
+from tqdm import tqdm
 
+from src.djng_app.cstm_clases import Fdout
+from src.djng_app.cstm_clases import Namespace
+from src.djng_app.style_transfer.INetwork import INet
 
 class ImageProcessor:
     def __init__(self):
@@ -30,8 +36,41 @@ class ImageProcessor:
         self.preserve_color = 'false'
         self.min_improvement = 0.0
 
-    def process(self):
-        subprocess.run(self.path + "INetwork.py", )
+    def _create_pbar(self, max_iter):
+        """
+            Creates a progress bar.
+        """
+
+        self.grad_iter = 0
+        logging.info(current_task)
+        self.pbar = pb.ProgressBar(term_width=0, fd=Fdout(tsk=current_task))
+        self.pbar.widgets = [pb.Percentage()]
+        # self.pbar.widgets = ["Optimizing: ", pb.Percentage(),
+        #                      " ", pb.Bar(marker=pb.AnimatedMarker()),
+        #                      " ", pb.ETA()]
+        self.pbar.maxval = max_iter
+
+    def process(self, args: dict):
+
+        net_processor = INet()
+        net_processor.image_size = args.length
+        net_processor.base_image_path = args.content_img
+        net_processor.style_image_path = [args.style_img]
+        # net_processor.style_scale = ""
+        # net_processor.rescale_image = ""
+        # net_processor.preserve_color = ""
+        # net_processor.init_image = ""  # color
+        # net_processor.min_improvement = ""
+        net_processor.num_iter = 1
+        # net_processor.content_weight = ""
+        # net_processor.style_weight = ""
+        net_processor.process()
+
+        # self._create_pbar(net_processor.num_iter)
+        # self.pbar.start()
+        for i in tqdm(range(net_processor.num_iter)):
+            net_processor.iterate()
+        # self.pbar.finish()
 
         pass
 

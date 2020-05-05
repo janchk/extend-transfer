@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <p>Uploaded page is loaded.</p>
-    <img src="{{ cimg }}" height="30%" width="30%" title="content image"/>
-    <img src="{{ simg }}" height="30%" width="30%" title="style image"/>
+    <img src="{{ content_img }}" height="30%" width="30%" title="content image"/>
+    <img src="{{ style_img }}" height="30%" width="30%" title="style image"/>
     <form action="{% url "proceed" %}" method="post"  id="result-load" name="result">
         {% csrf_token %}
         <input type="hidden"  value="" name="tsk_id" id="task_id"/>

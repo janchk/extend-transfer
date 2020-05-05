@@ -48,7 +48,8 @@ ALLOWED_HOSTS = ['127.0.0.1']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'djng_app.apps.DjngAppConfig',
+    # 'djng_app.apps.DjngAppConfig',
+    # 'src.djng_app.apps.DjngAppConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -65,7 +66,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_proj.urls'
+# ROOT_URLCONF = 'django_proj.urls'
+ROOT_URLCONF = 'src.django_proj.urls'
 
 TEMPLATES = [
     {

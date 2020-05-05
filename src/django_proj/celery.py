@@ -2,9 +2,10 @@ from __future__ import absolute_import
 import os
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_proj.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.django_proj.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_pr.settings')
 
-app = Celery('django_proj', backend='redis://localhost', broker='pyamqp://guest@localhost//')
+app = Celery('src/django_proj', backend='redis://localhost', broker='pyamqp://guest@localhost//')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
