@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UploadFileForm
-
-from src.djng_app import file_handler
 import uuid
+
+from django.shortcuts import render, redirect
+
+from ExtendTransfer_app import file_handler
+from ExtendTransfer_app.forms import UploadFileForm
 
 
 def upload_file(request):

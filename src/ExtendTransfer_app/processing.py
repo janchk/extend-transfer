@@ -1,17 +1,13 @@
-from celery import Celery
-# from djng_app.style import main
-from .cstm_clases import Namespace
-from django.shortcuts import render, redirect
 from celery.result import AsyncResult
 from django.http import JsonResponse
-from .tasks import *
-from src.djng_app.aux import *
+from django.shortcuts import render
+
+from ExtendTransfer_app.aux import *
+from ExtendTransfer_app.tasks import *
 
 
 def processing(request):
-    processed_output = None
     sess_id = request.COOKIES['id']
-    # output = 'media/output/output_' + sess_id + '.jpg'  # todo refactor this
     model = "vgg16"  # googlenet, vgg19
     ratio = "1e8"
     num_iters = 1

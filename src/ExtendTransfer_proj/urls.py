@@ -3,8 +3,8 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-from src.djng_app.processing import processing
-from src.djng_app.views import upload_file
+from ExtendTransfer_app.processing import processing
+from ExtendTransfer_app.views import upload_file
 
 urlpatterns = [
     # url(r'^$', views.index, name='index'),

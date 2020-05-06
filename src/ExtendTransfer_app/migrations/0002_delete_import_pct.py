@@ -6,9 +6,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('djng_app', '0001_initial'),
+        ('ExtendTransfer_app', '0001_initial'),
     ]
 
     operations = [

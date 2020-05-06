@@ -1,4 +1,5 @@
-from src.djng_app.tasks import styletransfer
+from src.ExtendTransfer_app.tasks import styletransfer
+
 if __name__ == "__main__":
     args = dict(content_img="/home/jan/Documents/code/extend-transfer/media/images/content_img/bamboo_forest.jpg",
                 style_img="/home/jan/Documents/code/extend-transfer/media/images/style_img/shipwreck.jpg", gpu_id=-1,

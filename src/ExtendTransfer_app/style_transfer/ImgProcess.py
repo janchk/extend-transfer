@@ -1,11 +1,12 @@
 import logging
+
 import progressbar as pb
 from celery import current_task
 from tqdm import tqdm
-from src.djng_app.style_transfer.utils import imsave
-from src.djng_app.cstm_clases import Fdout
-from src.djng_app.cstm_clases import Namespace
-from src.djng_app.style_transfer.INetwork import INet
+
+from ExtendTransfer_app.cstm_clases import Fdout
+from ExtendTransfer_app.style_transfer.INetwork import INet
+from ExtendTransfer_app.style_transfer.utils import imsave
 
 
 class ImageProcessor:

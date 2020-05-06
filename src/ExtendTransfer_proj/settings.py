@@ -16,7 +16,7 @@ CELERY_IGNORE_RESULT = False
 
 # Style-transfer perferences
 
-STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
+# STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = (
     'media/'
 )
-
 
 
 MEDIA_URL = 'media/'
@@ -48,8 +47,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    # 'djng_app.apps.DjngAppConfig',
-    # 'src.djng_app.apps.DjngAppConfig',
+    'ExtendTransfer_app.apps.DjngAppConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -66,8 +64,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ROOT_URLCONF = 'django_proj.urls'
-ROOT_URLCONF = 'src.django_proj.urls'
+ROOT_URLCONF = 'ExtendTransfer_proj.urls'
+# ROOT_URLCONF = 'src.ExtendTransfer_proj.urls'
 
 TEMPLATES = [
     {
@@ -85,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_proj.wsgi.application'
+WSGI_APPLICATION = 'ExtendTransfer_proj.wsgi.application'
 
 
 # Database

@@ -1,12 +1,3 @@
-from json import JSONEncoder
-from celery.result import AsyncResult
-from celery import Celery
-# app = Celery('style', backend='redis://localhost', broker='pyamqp://guest@localhost//')
-# Reassigning fd to make progress out
-# updating current state when style.py try to write out progress
-from kombu.utils import json
-
-
 class Fdout:
     def __init__(self, tsk):
         self.tsk_id = tsk

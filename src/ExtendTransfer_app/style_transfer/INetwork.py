@@ -1,25 +1,19 @@
-from __future__ import print_function
-from __future__ import division
 from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
-from src.djng_app.style_transfer.utils import imread, imresize, imsave, fromimage, toimage
-# from numpy import asarray as fromimage
-# from imageio import imread, imsave
-#
-# from scipy.ndimage import imread, imresize, imsave, fromimage, toimage
-
-from scipy.optimize import fmin_l_bfgs_b
-import numpy as np
-import time
-import argparse
 import warnings
 
-from keras.models import Model
+import numpy as np
+from keras import backend as K
 from keras.layers import Input
 from keras.layers.convolutional import Convolution2D, AveragePooling2D, MaxPooling2D
-from keras import backend as K
+from keras.models import Model
 from keras.utils.data_utils import get_file
 from keras.utils.layer_utils import convert_all_kernels_in_model
+from scipy.optimize import fmin_l_bfgs_b
+
+from ExtendTransfer_app.style_transfer.utils import imread, imresize, fromimage, toimage
 
 """
 Neural Style Transfer with Keras 2.0.5
