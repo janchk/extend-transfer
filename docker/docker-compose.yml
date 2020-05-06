@@ -1,0 +1,59 @@
+version: '2'
+
+services:
+  # Redis - result backend
+  redis:
+    image: redis:2.8.19
+    hostname: redis
+    ports:
+    - "6379:6379"
+
+  # RabbitMQ - queue
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    expose:
+      - "5672"
+      - "15672"
+
+
+  # Celery worker
+  worker:
+    hostname: celery
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh /app/scripts/run_celery.sh
+    volumes:
+      - ..:/app
+    links:
+      - rabbit
+      - redis
+    depends_on:
+      - rabbit
+    environment:
+      - INDOCKER=1
+
+  # Django web server - celery master
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: web
+    command: sh /app/scripts/run_web_server.sh
+    environment:
+      - INDOCKER=1
+    volumes:
+      - ..:/app
+    ports:
+      - "8000:8000"
+    links:
+      - rabbit
+      - redis
+    depends_on:
+      - worker
+
+

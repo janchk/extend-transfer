@@ -16,7 +16,6 @@ CELERY_IGNORE_RESULT = False
 
 # Style-transfer perferences
 
-# STYLE_PATH = '/home/jan/Documents/style-transfer/style-transfer'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +26,6 @@ MEDIA_ROOT = (
 
 
 MEDIA_URL = 'media/'
-# MEDIA_URL = '/home/jan/Documents/style-transfer/style-transfer/outputs/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +37,7 @@ SECRET_KEY = 'dsju12fbd7+d*p@2_7y6w!_psgaik#9(edms)d7pn+sd!3ye_e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -65,7 +63,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ExtendTransfer_proj.urls'
-# ROOT_URLCONF = 'src.ExtendTransfer_proj.urls'
 
 TEMPLATES = [
     {
@@ -133,7 +130,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+# if os.environ.get("INDOCKER"):
+#     STATIC_URL = '/app/static/'
+# else:
 STATIC_URL = 'static/'
 # STYLE_TRANSFER_URL = ''  # need to change on server
 # STYLE_TRANSFER = STYLE_TRANSFER_URL + 'style.py'

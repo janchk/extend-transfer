@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from ExtendTransfer_app.aux import *
-from ExtendTransfer_app.tasks import *
+from ExtendTransfer_app.tasks import styletransfer
 
 
 def processing(request):

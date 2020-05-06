@@ -2,11 +2,14 @@ from __future__ import absolute_import
 import os
 from celery import Celery
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.ExtendTransfer_proj.settings')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ExtendTransfer_proj.settings')
+is_docker = os.environ.get('INDOCKER')
 
-app = Celery('src/ExtendTransfer_proj', backend='redis://localhost', broker='pyamqp://guest@localhost//')
-# app = Celery('ExtendTransfer_proj', backend='redis://localhost', broker='pyamqp://guest@localhost//')
+print(is_docker)
+if is_docker:
+    app = Celery('src/ExtendTransfer_proj', backend='redis://redis', broker='pyamqp://admin:admin@rabbit//')
+else:
+    app = Celery('src/ExtendTransfer_proj', backend='redis://localhost', broker='pyamqp://guest@localhost//')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 

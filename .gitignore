@@ -1,8 +1,8 @@
 ### Pycharm ###
 .idea
 /**/*.pyc
-src/django_proj/*.pyc
-src/django_app/*.pyc
+src/ExtendTransfer_proj/*.pyc
+src/ExtendTransfer_app/*.pyc
 venv
 
 
