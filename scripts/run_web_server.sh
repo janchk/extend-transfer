@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# wait for PSQL server to start
 sleep 3
 
 cd /app || cd .

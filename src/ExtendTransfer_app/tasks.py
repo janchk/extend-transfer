@@ -17,4 +17,3 @@ def styletransfer(args):
 
     img_processor.process(args)
 
-# #  celery -A ExtendTransfer_proj worker --loglevel=info

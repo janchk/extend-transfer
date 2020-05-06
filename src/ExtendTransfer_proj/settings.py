@@ -24,9 +24,7 @@ MEDIA_ROOT = (
     'media/'
 )
 
-
 MEDIA_URL = 'media/'
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -38,7 +36,6 @@ SECRET_KEY = 'dsju12fbd7+d*p@2_7y6w!_psgaik#9(edms)d7pn+sd!3ye_e'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
-
 
 # Application definition
 
@@ -82,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ExtendTransfer_proj.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -93,7 +89,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -113,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -126,7 +120,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

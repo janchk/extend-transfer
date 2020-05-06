@@ -7,5 +7,4 @@ if __name__ == "__main__":
                 ratio="1", num_iters=1, length=100, verbose=True,
                 output="/home/jan/Documents/code/extend-transfer/media/images/output/8e347556")
     styletransfer(args)
-    # styletransfer.delay(args)
     pass
