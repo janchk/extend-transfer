@@ -16,6 +16,9 @@ class Fdout:
         self.tsk_id.update_state(state="PROGRESS", meta=prgrs)
         print(prgrs)
 
+    def flush(self) -> None:
+        pass
+
 
 # emulation for parser's namespace arguments
 # must specify 10 arguments at least

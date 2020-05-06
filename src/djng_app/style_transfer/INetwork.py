@@ -35,8 +35,8 @@ Contains few improvements suggested in the paper Improving the Neural Algorithm 
 
 
 class Evaluator(object):
-    def __init__(self, f_outputs):
-        self.f_outputs = f_outputs
+    def __init__(self):
+        self.f_outputs = None
         self.loss_value = None
         self.grads_values = None
         self.eval_loss_and_grads = None
@@ -135,7 +135,7 @@ class INet:
         self.img_size = 400
         self.pool = "Max"
         self.tv_weight = None
-        self.color = "True"
+        self.color = "false"
         self.content_mask_path = None
         self.base_image_path = None
         self.style_image_path = None
@@ -176,8 +176,15 @@ class INet:
 
         self.x = None
         self.i = 0
+        self.img = None
 
         # self.preserve_color
+
+    def pooling_func(self, x):
+        if self.pooltype == 1:
+            return AveragePooling2D((2, 2), strides=(2, 2))(x)
+        else:
+            return MaxPooling2D((2, 2), strides=(2, 2))(x)
 
     def eval_loss_and_grads(self, x, f_outputs):
         if K.image_data_format() == "channels_first":
@@ -191,24 +198,6 @@ class INet:
         else:
             grad_values = np.array(outs[1:]).flatten().astype('float64')
         return loss_value, grad_values
-
-    # util function to convert a tensor into a valid image
-    def deprocess_image(self, x):
-        if K.image_data_format() == "channels_first":
-            x = x.reshape((3, self.img_width, self.img_height))
-            x = x.transpose((1, 2, 0))
-        else:
-            x = x.reshape((self.img_width, self.img_height, 3))
-
-        x[:, :, 0] += 103.939
-        x[:, :, 1] += 116.779
-        x[:, :, 2] += 123.68
-
-        # BGR -> RGB
-        x = x[:, :, ::-1]
-
-        x = np.clip(x, 0, 255).astype('uint8')
-        return x
 
     def model_construct(self, ip):
         # build the VGG16 network with our 3 images as input
@@ -315,7 +304,6 @@ class INet:
 
         return multiplier * K.sum(K.square(combination - base))
 
-    # @staticmethod
     def total_variation_loss(self, x):
         assert K.ndim(x) == 4
         if K.image_data_format() == "channels_first":
@@ -494,7 +482,8 @@ class INet:
             outputs.append(grads)
 
         f_outputs = K.function([combination_image], outputs)
-        self.evaluator = Evaluator(f_outputs)
+        self.evaluator = Evaluator()
+        self.evaluator.f_outputs = f_outputs
 
         if "content" in self.init_image or "gray" in self.init_image:
             self.x = self.preprocess_image(base_image_path, True, read_mode=read_mode)
@@ -533,7 +522,7 @@ class INet:
         self.evaluator.eval_loss_and_grads = self.eval_loss_and_grads
 
         self.x, min_val, info = fmin_l_bfgs_b(self.evaluator.loss, self.x.flatten(),
-                                         fprime=self.evaluator.grads, maxfun=20)
+                                              fprime=self.evaluator.grads, maxfun=20)
 
         if self.prev_min_val == -1:
             self.prev_min_val = min_val
@@ -558,10 +547,12 @@ class INet:
             print("Rescaling Image to (%d, %d)" % (self.img_WIDTH, self.img_HEIGHT))
             img = imresize(img, (self.img_WIDTH, self.img_HEIGHT), interp=self.rescale_method)
 
-        fname = self.result_prefix + "_at_iteration_%d.png" % (self.i + 1)
-        imsave(fname, img)
+        # fname = self.result_prefix + "_at_iteration_%d.png" % (self.i + 1)
+        # imsave(fname, img)
         # end_time = time.time()
-        print("Image saved as", fname)
+        # print("Image saved as", fname)
+
+        self.img = img
 
         if self.improvement_threshold is not 0.0:
             if improvement < self.improvement_threshold and improvement is not 0.0:
@@ -611,8 +602,23 @@ class INet:
         img = np.expand_dims(img, axis=0)
         return img
 
-    def pooling_func(self, x):
-        if self.pooltype == 1:
-            return AveragePooling2D((2, 2), strides=(2, 2))(x)
+    # util function to convert a tensor into a valid image
+    def deprocess_image(self, x):
+        if K.image_data_format() == "channels_first":
+            x = x.reshape((3, self.img_width, self.img_height))
+            x = x.transpose((1, 2, 0))
         else:
-            return MaxPooling2D((2, 2), strides=(2, 2))(x)
+            x = x.reshape((self.img_width, self.img_height, 3))
+
+        x[:, :, 0] += 103.939
+        x[:, :, 1] += 116.779
+        x[:, :, 2] += 123.68
+
+        # BGR -> RGB
+        x = x[:, :, ::-1]
+
+        x = np.clip(x, 0, 255).astype('uint8')
+        return x
+
+    def get_result(self):
+        return self.img
