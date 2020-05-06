@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <p>Uploaded page is loaded.</p>
+{#    <p>Uploaded page is loaded.</p>#}
     <img src="{{ content_img }}" height="30%" width="30%" title="content image"/>
     <img src="{{ style_img }}" height="30%" width="30%" title="style image"/>
     <form action="{% url "proceed" %}" method="post"  id="result-load" name="result">

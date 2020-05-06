@@ -2,22 +2,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Files upload</title>
+    <div class="header">
+        <meta charset="UTF-8">
+        <title>Files upload</title>
+    </div>
 </head>
 <body>
 <h1>Upload file</h1>
 {% block content %}
-    <form action="{% url "upload_file" %}" method="post" enctype="multipart/form-data">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <P>Content image</P>
-        <input type="file" placeholder="File" name="content_img"/>
-        <P>Style image</P>
-        <input type="file" placeholder="File" name="style_img"/>
-        <p><button type="submit" value="Upload" class="">Upload</button></p>
-    </form>
+    <div class="column middle">
+        <form action="{% url "upload_file" %}" method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <P>Content image</P>
+            <input type="file" placeholder="File" name="content_img"/>
+            <P>Style image</P>
+            <input type="file" placeholder="File" name="style_img"/>
+            <p>
+                <button type="submit" value="Upload" class="">Upload</button>
+            </p>
+        </form>
+    </div>
 {% endblock %}
-
 </body>
 </html>

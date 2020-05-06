@@ -3,6 +3,7 @@
 {% load static %}
 
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
 {% block javascript %}
     {# JQUERY FILE UPLOAD SCRIPTS #}
     <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -72,9 +73,14 @@
     <title>Extend-transfer</title>
 </head>
 <body>
-<h1>Extend-transfer</h1>
-{% block content %}
+<div class="header">
+    <h1>Extend-transfer</h1>
+</div>
+<div class="column middle">
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+</div>
+
 </body>
 </html>
