@@ -10,16 +10,28 @@
 <body>
 <h1>Upload file</h1>
 {% block content %}
-    <div class="column middle">
+    <div class="w3-container w3-card w3-white w3-round w3-margin">
         <form action="{% url "upload_file" %}" method="post" enctype="multipart/form-data">
             {{ form.as_p }}
             {% csrf_token %}
-            <P>Content image</P>
-            <input type="file" placeholder="File" name="content_img"/>
-            <P>Style image</P>
-            <input type="file" placeholder="File" name="style_img"/>
+            <div class="container">
+                <h1>jQuery Image Upload
+                    <small>with preview</small>
+                </h1>
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <p>
-                <button type="submit" value="Upload" class="">Upload</button>
+                <button type="submit" value="Upload" class="w3-button w3-theme">Upload</button>
             </p>
         </form>
     </div>
