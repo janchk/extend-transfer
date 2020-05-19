@@ -14,7 +14,8 @@ class ImageProcessor:
         self.path = ""
 
         # Image size
-        self.image_size = 500
+        # self.image_size = 500
+        self.image_size = 300
 
         # Loss weights
         self.content_weight = 0.025

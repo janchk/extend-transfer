@@ -14,22 +14,38 @@
         <form action="{% url "upload_file" %}" method="post" enctype="multipart/form-data">
             {{ form.as_p }}
             {% csrf_token %}
-            <div class="container">
-                <h1>jQuery Image Upload
-                    <small>with preview</small>
-                </h1>
-                <div class="avatar-upload">
-                    <div class="avatar-edit">
-                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
-                        <label for="imageUpload"></label>
-                    </div>
-                    <div class="avatar-preview">
-                        <div id="imagePreview">
-                        </div>
-                    </div>
+
+            <div class="setting"></div>
+
+            <div class="setting image_picker">
+                <h2>Content Image</h2>
+                <div class="settings_wrap">
+                    <label class="drop_target">
+                        <div class="image_preview"></div>
+                        <input id="inputFile" type="file" name="content_img"/>
+                    </label>
+                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded">
+                    </a><a class="disabled"
+                           data-action="remove_current_image">
+                        <i class="fa fa-ban"></i> Remove Current Image</a></div>
                 </div>
             </div>
 
+            <div class="setting image_picker">
+                <h2>Style Image</h2>
+                <div class="settings_wrap">
+                    <label class="drop_target">
+                        <div class="image_preview_style"></div>
+                        <input id="inputFileStyle" type="file" name="style_img"/>
+                    </label>
+                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded">
+                    </a><a class="disabled"
+                           data-action="remove_current_image_style">
+                        <i class="fa fa-ban"></i> Remove Current Image</a></div>
+                </div>
+            </div>
+
+            <div class="setting"></div>
             <p>
                 <button type="submit" value="Upload" class="w3-button w3-theme">Upload</button>
             </p>

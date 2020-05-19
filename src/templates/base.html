@@ -17,7 +17,7 @@
     {# JQUERY FILE UPLOAD SCRIPTS #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 {#    <script src="{% static 'js/jquery.min.js' %}"></script>#}
-    <script src="{% static 'js/process.start.js' %}"></script>
+    <script src="{% static 'js/process.start.js' %}/"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/img-uploader.js' %}"></script>
 
@@ -86,7 +86,9 @@
 </head>
 <body class="w3-theme-l5">
 <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+    <div id="topLine" class="top_line">
     <h1>Extend-transfer</h1>
+    </div>
 </div>
 {#<div class="w3-theme-l5">#}
     {% block content %}

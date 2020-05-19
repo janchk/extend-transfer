@@ -6,6 +6,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.top_line {
+    padding: 10px;
+}
+
 /* Style the header */
 .header {
     background-color: #f1f1f1;

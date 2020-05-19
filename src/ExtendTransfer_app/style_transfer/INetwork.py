@@ -561,6 +561,7 @@ class INet:
         mode = "RGB" if read_mode == "color" else "L"
         img = imread(image_path, mode=mode)  # Prevents crashes due to PNG images (ARGB)
 
+
         if mode == "L":
             # Expand the 1 channel grayscale to 3 channel grayscale image
             temp = np.zeros(img.shape + (3,), dtype=np.uint8)
