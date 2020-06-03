@@ -35,7 +35,7 @@ SECRET_KEY = 'dsju12fbd7+d*p@2_7y6w!_psgaik#9(edms)d7pn+sd!3ye_e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', "ec2-54-149-12-85.us-west-2.compute.amazonaws.com"]
 
 # Application definition
 
@@ -126,6 +126,13 @@ USE_TZ = True
 # if os.environ.get("INDOCKER"):
 #     STATIC_URL = '/app/static/'
 # else:
+# STATIC_URL = BASE_DIR + '/static/'
 STATIC_URL = 'static/'
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+#     "/app/static/",
+# )
+
 # STYLE_TRANSFER_URL = ''  # need to change on server
 # STYLE_TRANSFER = STYLE_TRANSFER_URL + 'style.py'

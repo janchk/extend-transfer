@@ -4,11 +4,11 @@
 
 // $(function () {
 //
-//     $("#js-proceed-photos").click(function () {
+//     $("#restart").click(function () {
 //         $.ajax({
 //             type: 'post',
-//             url: '{% url "proceed" %}',
-//             data: {'img_to_proceed': "{{ cimg }},{{ simg }}", csrfmiddlewaretoken: "{{ csrf_token }}"},
+//             url: "/",
+//             data: {csrfmiddlewaretoken: "{{ csrf_token }}"},
 //             success: {}
 //         });
 //     });

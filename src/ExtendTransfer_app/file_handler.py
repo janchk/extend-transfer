@@ -1,10 +1,10 @@
 import os
 
+from PIL import Image
 from django.conf import settings
 
 
-# todo handle with different types of images
-def handle_uploaded_file(f, imgtype, id):
+def handle_uploaded_file(f, imgtype, id, img_size):
     print('BASEDIIR =', settings.BASE_DIR)
     if imgtype == "content_img":
         f_path = settings.MEDIA_URL + 'images/content_img'
@@ -15,7 +15,8 @@ def handle_uploaded_file(f, imgtype, id):
         os.makedirs(f_path)
     img_path = os.path.join(f_path, id)
 
-    with open(img_path, 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
+    im = Image.open(f)
+    im = im.convert("RGB")
+    im = im.resize((img_size, img_size))
+    im.save(img_path, format='JPEG', quality=100)
     return img_path

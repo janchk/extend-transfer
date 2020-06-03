@@ -56,6 +56,7 @@ class ImageProcessor:
     def process(self, args: dict):
         net_processor = INet()
         net_processor.image_size = args.length
+        net_processor.img_size = args.length
         net_processor.base_image_path = args.content_img
         net_processor.style_image_path = [args.style_img]
 
@@ -73,6 +74,7 @@ class ImageProcessor:
         self.pbar.start()
         for i in tqdm(range(net_processor.num_iter)):
             net_processor.iterate()
+            self.pbar.update(i+1)
         self.pbar.finish()
 
         img = net_processor.get_result()

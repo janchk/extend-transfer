@@ -8,15 +8,13 @@
 <link href="{% static 'css/w3-theme-blue-grey.css' %}" rel="stylesheet">
 <link href="{% static 'css/wtf-forms.css' %}" rel="stylesheet">
 <link href="{% static 'css/img-uploader.css' %}" rel="stylesheet">
-{#<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">#}
-{#<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">#}
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% block javascript %}
     {# JQUERY FILE UPLOAD SCRIPTS #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-{#    <script src="{% static 'js/jquery.min.js' %}"></script>#}
+    {#    <script src="{% static 'js/jquery.min.js' %}"></script>#}
     <script src="{% static 'js/process.start.js' %}/"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/img-uploader.js' %}"></script>
@@ -27,7 +25,7 @@
                 $.ajax({
                     type: 'post',
                     url: '{% url "proceed" %}',
-                    data: {'img_to_proceed': "{{ cimg }},{{ simg }}", csrfmiddlewaretoken: "{{ csrf_token }}"},
+                    data: {'img_to_process': "{{ cimg }},{{ simg }}", csrfmiddlewaretoken: "{{ csrf_token }}"},
                     success:
                         function (data) {
                             $("#modal-progress").modal("show");
@@ -70,7 +68,7 @@
                     <h4 class="modal-title">Processing...</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="progress">
+                    <div class="progress" style="width: 100%">
                         <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
                     </div>
                 </div>
@@ -82,18 +80,20 @@
 {% endblock %}
 <head>
     <meta charset="UTF-8">
-    <title>Extend-transfer</title>
+    <title>
+        Extend-transfer
+    </title>
 </head>
 <body class="w3-theme-l5">
 <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
     <div id="topLine" class="top_line">
-    <h1>Extend-transfer</h1>
+        <h1><a href="/">Extend-transfer</a></h1>
     </div>
 </div>
 {#<div class="w3-theme-l5">#}
-    {% block content %}
+{% block content %}
 
-    {% endblock %}
+{% endblock %}
 {#</div>#}
 
 </body>

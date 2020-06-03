@@ -532,14 +532,14 @@ class INet:
         if self.preserve_color and self.content is not None:
             img = original_color_transform(self.content, img, mask=self.color_mask)
 
-        if not self.rescale_image:
-            img_ht = int(self.img_width * self.aspect_ratio)
-            print("Rescaling Image to (%d, %d)" % (self.img_width, img_ht))
-            img = imresize(img, (self.img_width, img_ht), interp=self.rescale_method)
-
-        if self.rescale_image:
-            print("Rescaling Image to (%d, %d)" % (self.img_WIDTH, self.img_HEIGHT))
-            img = imresize(img, (self.img_WIDTH, self.img_HEIGHT), interp=self.rescale_method)
+        # if not self.rescale_image:
+        #     img_ht = int(self.img_width * self.aspect_ratio)
+        #     print("Rescaling Image to (%d, %d)" % (self.img_width, img_ht))
+        #     img = imresize(img, (self.img_width, img_ht), interp=self.rescale_method)
+        #
+        # if self.rescale_image:
+        #     print("Rescaling Image to (%d, %d)" % (self.img_WIDTH, self.img_HEIGHT))
+        #     img = imresize(img, (self.img_WIDTH, self.img_HEIGHT), interp=self.rescale_method)
 
         # fname = self.result_prefix + "_at_iteration_%d.png" % (self.i + 1)
         # imsave(fname, img)
@@ -547,6 +547,9 @@ class INet:
         # print("Image saved as", fname)
 
         self.img = img
+        print("Image shape is ")
+        print(img.shape)
+        # self.img = img
 
         if self.improvement_threshold is not 0.0:
             if improvement < self.improvement_threshold and improvement is not 0.0:
