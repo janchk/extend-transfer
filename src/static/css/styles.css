@@ -1,0 +1,56 @@
+/* General styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  /* Top navigation bar */
+  .w3-bar {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .top_line {
+    padding-left: 1rem;
+  }
+  
+  .top_line h1 {
+    margin: 0;
+    padding: 1rem 0;
+  }
+  
+  .top_line h1 a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .top_line h1 a:hover {
+    color: #ccc;
+  }
+  
+  /* Modal styles */
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    font-size: 1rem;
+  }
+  
+  .progress {
+    height: 1rem;
+  }
+  
+  .progress-bar {
+    background-color: #4caf50;
+  }
+  
+  /* Add any additional styles you may need */
+  

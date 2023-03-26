@@ -20,11 +20,10 @@ CELERY_IGNORE_RESULT = False
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MEDIA_ROOT = (
-    'media/'
-)
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-MEDIA_URL = 'media/'
+
+MEDIA_URL = "/media/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -35,7 +34,7 @@ SECRET_KEY = 'dsju12fbd7+d*p@2_7y6w!_psgaik#9(edms)d7pn+sd!3ye_e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', "ec2-54-149-12-85.us-west-2.compute.amazonaws.com"]
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', "localhost"]
 
 # Application definition
 
@@ -126,13 +125,13 @@ USE_TZ = True
 # if os.environ.get("INDOCKER"):
 #     STATIC_URL = '/app/static/'
 # else:
-# STATIC_URL = BASE_DIR + '/static/'
-STATIC_URL = 'static/'
+STATIC_URL = BASE_DIR + '/static/'
+# STATIC_URL = 'static/'
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-#     "/app/static/",
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    # "/app/static/",
+)
 
 # STYLE_TRANSFER_URL = ''  # need to change on server
 # STYLE_TRANSFER = STYLE_TRANSFER_URL + 'style.py'

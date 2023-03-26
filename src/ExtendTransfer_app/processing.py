@@ -6,6 +6,7 @@ from ExtendTransfer_app.aux import *
 from ExtendTransfer_app.tasks import styletransfer
 
 
+
 def processing(request):
     sess_id = request.COOKIES['id']
     num_iters = int(request.COOKIES['n_iterations'])

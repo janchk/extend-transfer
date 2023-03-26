@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,66 +10,75 @@
     </div>
 </head>
 <body>
-<h1>Upload file</h1>
-{% block content %}
-    <div class="w3-container w3-card w3-white w3-round w3-margin">
-        <form action="{% url "upload_file" %}" method="post" enctype="multipart/form-data">
-            {{ form.as_p }}
-            {% csrf_token %}
-
-            <div class="setting"></div>
-
-            <div class="setting image_picker">
-                <h2>Content Image</h2>
-                <div class="settings_wrap">
-                    <label class="drop_target">
-                        <div class="image_preview"></div>
-                        <input id="inputFile" type="file" name="content_img"/>
-                    </label>
-                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded">
-                    </a><a class="disabled"
-                           data-action="remove_current_image">
-                        <i class="fa fa-ban"></i> Remove Current Image</a></div>
+    <div class="container mt-5">
+        {% comment %} <h1 class="mb-4">Upload file</h1> {% endcomment %}
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <form action="{% url "mix" %}" method="post" enctype="multipart/form-data" class="p-4">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Image 1</h2>
+                        <label class="drop_target">
+                            <div class="image_preview" style="height: 100%; width: 100%;"></div>
+                            <input id="inputFile" type="file" name="image_1" class="form-control"/>
+                        </label>
+                        <div class="settings_actions vertical mt-2">
+                            <a class="disabled" data-action="remove_current_image">
+                                <i class="fa fa-ban"></i> Remove Current Image
+                            </a>
+                        </div>
+                        <h6 class="w3-opacity mt-3">Strength: <span id="content_strength_value">1.0</span></h6>
+                        <input type="range" min="0" max="5" step="0.1" value="1.0" name="img1_str" class="form-control-range" oninput="document.getElementById('content_strength_value').innerText = this.value;">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Image 2</h2>
+                        <label class="drop_target">
+                            <div class="image_preview_style" style="height: 100%; width: 100%;"></div>
+                            <input id="inputFileStyle" type="file" name="image_2" class="form-control"/>
+                        </label>
+                        <div class="settings_actions vertical mt-2">
+                            <a class="disabled" data-action="remove_current_image_style">
+                                <i class="fa fa-ban"></i> Remove Current Image
+                            </a>
+                        </div>
+                        <h6 class="w3-opacity mt-3">Strength: <span id="style_strength_value">1.0</span></h6>
+                        <input type="range" min="0" max="5" step="0.1" value="1.0" name="img2_str" class="form-control-range" oninput="document.getElementById('style_strength_value').innerText = this.value;">
+                    </div>
                 </div>
-            </div>
-
-            <div class="setting image_picker">
-                <h2>Style Image</h2>
-                <div class="settings_wrap">
-                    <label class="drop_target">
-                        <div class="image_preview_style"></div>
-                        <input id="inputFileStyle" type="file" name="style_img"/>
-                    </label>
-                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded">
-                    </a><a class="disabled"
-                           data-action="remove_current_image_style">
-                        <i class="fa fa-ban"></i> Remove Current Image</a></div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6 class="w3-opacity">Sampler Method</h6>
+                        <select name="sampler_method" id="sampler_method" class="form-control">
+                            <option value="DDIM">DDIM</option>
+                            <option value="PLMS">PLMS</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="w3-opacity">Processing Device</h6>
+                                                <select name="processing_device" id="processing_device" class="form-control">
+                            <option value="CPU">CPU</option>
+                            <option value="GPU">GPU</option>
+                        </select>
+                    </div>
                 </div>
-
-                <h6 class="w3-opacity">Choose a size for image processing</h6>
-                <select name="image_size" id="image_size">
-                    <option value="100">100 x 100 px</option>
-                    <option value="200">200 x 200 px</option>
-                    <option value="300">300 x 300 px</option>
-                    <option value="400">400 x 400 px</option>
-                </select>
-
-                <h6 class="w3-opacity">Number of iterations</h6>
-                <select name="n_iterations" id="n_iterations">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                </select>
-
-            </div>
-
-            <div class="setting"></div>
-            <p>
-                <button type="submit" value="Upload" class="w3-button w3-theme">Upload</button>
-            </p>
-        </form>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6 class="w3-opacity">Number of Iterations: <span id="n_iterations_value">15</span></h6>
+                        <input type="range" min="5" max="50" step="5" value="15" name="n_iterations" id="n_iterations" class="form-control-range" oninput="document.getElementById('n_iterations_value').innerText = this.value;">
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="w3-opacity">CFG scale: <span id="scale_value">2.0</span></h6>
+                        <input type="range" min="1" max="10" step="0.1" value="2.0" name="scale" id="scale" class="form-control-range" oninput="document.getElementById('scale_value').innerText = this.value;">
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" value="mix" class="w3-button w3-theme", id="js-proceed-photos">Mix</button>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}
 </body>
 </html>
+
